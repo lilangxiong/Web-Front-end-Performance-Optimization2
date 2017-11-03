@@ -273,13 +273,14 @@ window.mDomUtils = {
 * 首页的css缓存会影响SEO
 * localStorage以页面的域名划分，而常见的静态资源都以资源本身的域名来缓存，意味着如果你的应用有多个等价域名，它们之间的localStorage不互通，会造成缓存多份浪费。
 * 兼容性需要处理（不支持、隐私模式、写满、http/https、写的正确性等等）
+* localStorage的key、value有字符数字的一个限制。大概在9800左右。
 
 
 ## localStorage的容量
-* 根据目前的市场上浏览器对loaclStorage的兼容性来看，最佳的大小是5M左右。
+* 根据目前的市场上浏览器对loaclStorage的兼容性来看，最佳的大小是2.5M左右，可以通过[此网站](http://dev-test.nemikor.com/web-storage/support-test/)进行计算查看详情的兼容性问题。
 * localStorage 中存储的是字符串，根据这一条件，我们可以通过取出所有的localStorage的内容，而其长度就是大小。
 * [点击此网站](https://arty.name/localstorage.html)可以计算出最大的容量，原理：通过先清空localStorage，然后不停的往里面写数据，直至报错。
-* JSON.stringify(localStorage).length获取当前已经用了多少容量。
+
 
 ## 腾讯的字符级别的缓存
 > 可以到这个[页面](http://code.csdn.net/news/2820563)体会下腾讯的字符级别的更新方案
